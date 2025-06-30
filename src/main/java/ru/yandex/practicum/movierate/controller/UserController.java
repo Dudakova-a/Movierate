@@ -26,7 +26,7 @@ public class UserController {
 
     @PostMapping // Обрабатывает HTTP POST запросы по пути /users
     public User createUser(@RequestBody User user) {
-        //log.debug("Получен запрос на создание пользователя: {}", user);
+       // log.debug("Получен запрос на создание пользователя: {}", user);
         if (!StringUtils.hasText(user.getName())) {
             user.setName(user.getLogin());
         }
