@@ -1,4 +1,4 @@
-package ru.yandex.practicum.movierate.model;
+package ru.yandex.practicum.movierate;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
