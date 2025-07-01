@@ -1,6 +1,7 @@
 package ru.yandex.practicum.movierate.model;
 
 //import jakarta.validation.constraints.*;
+
 import lombok.Data;
 import lombok.Builder;
 

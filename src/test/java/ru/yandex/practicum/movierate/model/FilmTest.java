@@ -1,4 +1,4 @@
-package model;
+package ru.yandex.practicum.movierate.model;
 
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.util.Set;
 
 import jakarta.validation.ConstraintViolation;
-import ru.yandex.practicum.movierate.model.Film;
+import ru.yandex.practicum.movierate.model.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -2,6 +2,7 @@ package ru.yandex.practicum.movierate.controller;
 
 //import lombok.extern.slf4j.*;
 //import jakarta.validation.Valid;
+
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import ru.yandex.practicum.movierate.model.User;
@@ -26,7 +27,7 @@ public class UserController {
 
     @PostMapping // Обрабатывает HTTP POST запросы по пути /users
     public User createUser(@RequestBody User user) {
-       // log.debug("Получен запрос на создание пользователя: {}", user);
+        // log.debug("Получен запрос на создание пользователя: {}", user);
         if (!StringUtils.hasText(user.getName())) {
             user.setName(user.getLogin());
         }

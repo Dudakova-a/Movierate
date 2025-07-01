@@ -1,4 +1,4 @@
-package model;
+package ru.yandex.practicum.movierate.model;
 
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
@@ -6,7 +6,7 @@ import jakarta.validation.Validator;
 import jakarta.validation.ValidatorFactory;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import ru.yandex.practicum.movierate.model.User;
+import ru.yandex.practicum.movierate.model.*;
 
 import java.time.LocalDate;
 import java.util.Set;

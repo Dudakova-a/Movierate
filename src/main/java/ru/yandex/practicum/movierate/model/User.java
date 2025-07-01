@@ -1,8 +1,8 @@
 package ru.yandex.practicum.movierate.model;
 
 
-
 //import jakarta.validation.constraints.*;
+
 import lombok.Data;
 import lombok.Builder;
 
@@ -21,13 +21,13 @@ public class User {
     //@Email(message = "Email должен содержать символ @")
     private String email;       // Электронная почта пользователя
 
-   // @NotBlank(message = "Логин не может быть пустым")
+    // @NotBlank(message = "Логин не может быть пустым")
     //@Pattern(regexp = "\\S+", message = "Логин не может содержать пробелы")
     private String login;       // Логин пользователя
 
     private String name;        // Имя пользователя для отображения
 
-   //@PastOrPresent(message = "Дата рождения не может быть в будущем")
+    //@PastOrPresent(message = "Дата рождения не может быть в будущем")
     private LocalDate birthday; // Дата рождения пользователя
 }
 
