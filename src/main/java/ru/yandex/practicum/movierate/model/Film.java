@@ -1,6 +1,6 @@
 package ru.yandex.practicum.movierate.model;
 
-//import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.*;
 
 import lombok.Data;
 import lombok.Builder;
@@ -16,15 +16,15 @@ import java.time.LocalDate;
 public class Film {
     private Integer id;            // Уникальный идентификатор фильма
 
-    //@NotBlank(message = "Название фильма не может быть пустым")
+    @NotBlank(message = "Название фильма не может быть пустым")
     private String name;           // Название фильма
 
-    //@Size(max = 200, message = "Описание не должно превышать 200 символов")
+    @Size(max = 200, message = "Описание не должно превышать 200 символов")
     private String description;    // Описание фильма
 
-    //@NotNull(message = "Дата релиза обязательна")
+    @NotNull(message = "Дата релиза обязательна")
     private LocalDate releaseDate; // Дата выхода фильма
 
-    //@Positive(message = "Продолжительность должна быть положительным числом")
+    @Positive(message = "Продолжительность должна быть положительным числом")
     private Integer duration;      // Продолжительность фильма в минутах
 }

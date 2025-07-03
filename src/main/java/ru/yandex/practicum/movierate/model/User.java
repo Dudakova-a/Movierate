@@ -1,7 +1,7 @@
 package ru.yandex.practicum.movierate.model;
 
 
-//import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.*;
 
 import lombok.Data;
 import lombok.Builder;
@@ -17,17 +17,17 @@ import java.time.LocalDate;
 public class User {
     private Integer id;         // Уникальный идентификатор пользователя
 
-    //@NotBlank(message = "Email не может быть пустым")
-    //@Email(message = "Email должен содержать символ @")
+    @NotBlank(message = "Email не может быть пустым")
+    @Email(message = "Email должен содержать символ @")
     private String email;       // Электронная почта пользователя
 
-    // @NotBlank(message = "Логин не может быть пустым")
-    //@Pattern(regexp = "\\S+", message = "Логин не может содержать пробелы")
+    @NotBlank(message = "Логин не может быть пустым")
+    @Pattern(regexp = "\\S+", message = "Логин не может содержать пробелы")
     private String login;       // Логин пользователя
 
     private String name;        // Имя пользователя для отображения
 
-    //@PastOrPresent(message = "Дата рождения не может быть в будущем")
+    @PastOrPresent(message = "Дата рождения не может быть в будущем")
     private LocalDate birthday; // Дата рождения пользователя
 }
 

@@ -1,9 +1,7 @@
 package ru.yandex.practicum.movierate.controller;
 
-
-//import lombok.extern.slf4j.Slf4j;
-//import jakarta.validation.Valid;
-
+import lombok.extern.slf4j.Slf4j;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 import ru.yandex.practicum.movierate.model.Film;
 import ru.yandex.practicum.movierate.exception.ValidationException;
@@ -15,11 +13,12 @@ import java.util.*;
  * Контроллер для обработки HTTP-запросов, связанных с фильмами.
  * Данные хранятся в памяти (HashMap) и возвращаются в формате JSON.
  */
-//@Slf4j
+@Slf4j
 @RestController
 @RequestMapping("/films") // Базовый путь для всех эндпоинтов этого контроллера
 public class FilmController {
     private final Map<Integer, Film> films = new HashMap<>(); // Хранилище фильмов в виде HashMap
+    private int currentId = 0; // Текущий ID для генерации следующего
     private static final LocalDate CINEMA_BIRTHDAY = LocalDate.of(1895, 12, 28);
 
     @GetMapping // Обрабатывает HTTP GET запросы по пути /films
@@ -29,11 +28,11 @@ public class FilmController {
     }
 
     @PostMapping // Обрабатывает HTTP POST запросы по пути /films
-    public Film addFilm(@RequestBody Film film) {
+    public Film addFilm(@Valid @RequestBody Film film) {
         // Валидация фильма согласно задания
         validateFilm(film);
         // Устанавливает новый ID
-        film.setId(Integer.valueOf(getNextId()));
+        film.setId(getNextId());
         // Сохраняет в Map
         films.put(film.getId(), film);
         // Возвращает созданный фильм
@@ -41,7 +40,7 @@ public class FilmController {
     }
 
     @PutMapping // Обрабатывает HTTP PUT запросы по пути /films
-    public Film updateFilm(@RequestBody Film film) {
+    public Film updateFilm(@Valid @RequestBody Film film) {
         // Валидация фильма согласно задания
         validateFilm(film);
         // Проверяем существование пользователя
@@ -56,11 +55,7 @@ public class FilmController {
 
     // Генерирует следующий доступный ID для нового фильма
     private int getNextId() {
-        return films.keySet()
-                .stream()
-                .mapToInt(id -> id)
-                .max()
-                .orElse(0) + 1;
+        return ++currentId;
     }
 
     // Метод для валидации фильма согласно задания

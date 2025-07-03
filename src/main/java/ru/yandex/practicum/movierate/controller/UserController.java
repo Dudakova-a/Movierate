@@ -1,7 +1,7 @@
 package ru.yandex.practicum.movierate.controller;
 
-//import lombok.extern.slf4j.*;
-//import jakarta.validation.Valid;
+import lombok.extern.slf4j.*;
+import jakarta.validation.Valid;
 
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +13,7 @@ import java.util.*;
 /**
  * Контроллер для обработки HTTP-запросов, связанных с пользователями.
  */
-//@Slf4j
+@Slf4j
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -26,27 +26,27 @@ public class UserController {
     }
 
     @PostMapping // Обрабатывает HTTP POST запросы по пути /users
-    public User createUser(@RequestBody User user) {
-        // log.debug("Получен запрос на создание пользователя: {}", user);
+    public User createUser(@Valid @RequestBody User user) {
+        log.debug("Получен запрос на создание пользователя: {}", user);
         if (!StringUtils.hasText(user.getName())) {
             user.setName(user.getLogin());
         }
         user.setId(getNextId()); // Устанавливаем новый ID перед сохранением
         users.put(user.getId(), user);// Сохраняем пользователя в Map
-        //log.debug("Пользователь успешно создан: {}", user);
+        log.debug("Пользователь успешно создан: {}", user);
         return user; // Возвращаем созданного пользователя
     }
 
     @PutMapping // Обрабатывает HTTP PUT запросы по пути /users
-    public User updateUser(@RequestBody User user) {
-        //log.debug("Получен запрос на обновление пользователя с ID {}: {}", user.getId(), user);
+    public User updateUser(@Valid @RequestBody User user) {
+        log.debug("Получен запрос на обновление пользователя с ID {}: {}", user.getId(), user);
         // Проверяем существование пользователя
         if (!users.containsKey(user.getId())) {
             throw new ValidationException("Пользователь с id=" + user.getId() + " не найден");
         }
         // Обновляем данные пользователя
         users.put(user.getId(), user);
-        //log.debug("Пользователь успешно обновлён: {}", user);
+        log.debug("Пользователь успешно обновлён: {}", user);
         // Возвращаем обновленного пользователя
         return user;
     }
