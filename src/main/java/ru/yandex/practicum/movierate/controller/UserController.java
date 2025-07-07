@@ -47,7 +47,6 @@ public class UserController {
         // Обновляем данные пользователя
         users.put(user.getId(), user);
         log.debug("Пользователь успешно обновлён: {}", user);
-        // Возвращаем обновленного пользователя
         return user;
     }
 
